@@ -26,7 +26,7 @@ class App extends Component {
     const { newItemName, newItemPrice } = this.state;
     if (newItemName && newItemPrice) {
       const newItem = {
-        id: Date.now(), // You can use any unique identifier for the new item
+        id: Date.now(),
         name: newItemName,
         price: parseFloat(newItemPrice),
       };
@@ -48,7 +48,7 @@ class App extends Component {
 
     return (
       <div className="parent">
-        <h2>Cart Items</h2>
+        <h2>Parent Component</h2>
         <label>Item Name</label>
         <input
           type='text'
@@ -63,7 +63,7 @@ class App extends Component {
           value={newItemPrice}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.handleAddItem}>Add Item</button>
+        <button onClick={this.handleAddItem} data-testid="addItemButton">Add Item</button> 
         <ChildComponent cartItems={this.state.cartItems} onRemoveItem={this.handleRemoveItem} />
       </div>
     );
@@ -71,4 +71,3 @@ class App extends Component {
 }
 
 export default App;
-
