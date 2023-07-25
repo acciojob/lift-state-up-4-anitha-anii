@@ -39,6 +39,14 @@ class App extends Component {
     }
   };
 
+  handleItemNameChange = (itemId, newName) => {
+    this.setState((prevState) => ({
+      cartItems: prevState.cartItems.map((item) =>
+        item.id === itemId ? { ...item, name: newName } : item
+      ),
+    }));
+  };
+
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -63,11 +71,16 @@ class App extends Component {
           value={newItemPrice}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.handleAddItem} data-testid="addItemButton">Add Item</button> 
-        <ChildComponent cartItems={this.state.cartItems} onRemoveItem={this.handleRemoveItem} />
+        <button onClick={this.handleAddItem} data-testid="addItemButton">Add Item</button>
+        <ChildComponent
+          cartItems={this.state.cartItems}
+          onRemoveItem={this.handleRemoveItem}
+          onItemNameChange={this.handleItemNameChange}
+        />
       </div>
     );
   }
 }
 
 export default App;
+
