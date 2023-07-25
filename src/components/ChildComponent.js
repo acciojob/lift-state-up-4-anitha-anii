@@ -12,7 +12,7 @@ const ChildComponent = ({ cartItems, onRemoveItem, onItemNameChange }) => {
         {cartItems.map((item) => (
           <li key={item.id} className="child li">
             <span
-              id={`itemName_${item.id}`}
+              id='itemName'
               contenteditable
               onBlur={(e) => handleItemNameChange(item.id, e.target.textContent)}
             >
